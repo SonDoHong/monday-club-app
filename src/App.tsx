@@ -3,20 +3,13 @@ import "./App.css";
 
 import db from "../firebase/firebase";
 import { Member } from "../firebase/getMembers";
-import { addDoc, collection, getDocs, query, where } from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
 import V2 from "./pages/V2";
 
 function App() {
     const [members, setMember] = useState<Member[]>([]);
 
     const [v2s, setV2s] = useState([]);
-
-    const [formMember, setFormMember] = useState({
-        memberId: "",
-        assist: "",
-        scored: "",
-        date: "",
-    });
 
     const updateData = () => {
         fetchMembers()
@@ -72,44 +65,6 @@ function App() {
     useEffect(() => {
         updateData()
     }, []);
-
-    const addMemberV2 = async (id: string) => {
-        const memberV2DocRef = collection(db, "v2");
-
-        try {
-            const docRef = await addDoc(memberV2DocRef, {
-                ...formMember,
-                memberId: id,
-            });
-            console.log("Document written with ID: ", docRef.id);
-        } catch (e) {
-            console.error("Error adding document: ", e);
-        }
-    };
-
-    const handleSubmit = (e: { preventDefault: () => void }, id: string) => {
-        e.preventDefault();
-
-        // setFormMember({
-        //     ...formMember,
-        //     memberId: id
-        // });
-
-        addMemberV2(id);
-    };
-
-    const handleChange = (e: any) => {
-        const { name, value } = e.target;
-
-        setFormMember({
-            ...formMember,
-            [name]: value,
-        });
-    };
-
-    const getMemberStats = (memberId: string) => {
-        return v2s.find((stats: any) => stats.memberId === memberId) || {};
-    }
 
     return (
         <div>

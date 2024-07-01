@@ -7,7 +7,6 @@ function TotalAchievement({ members, v2s }: any) {
         // Tính tổng ghiban và kiento cho từng memberId
         const stats = members.map((member: { id: any }) => {
             const memberAchievements = v2s.filter((v2: any) => v2.memberId === member.id);
-            console.log(memberAchievements);
             const totalScored = memberAchievements.reduce(
                 (sum: any, ach: any) => sum + ach.scored,
                 0
