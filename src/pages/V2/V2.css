@@ -1,0 +1,42 @@
+button {
+    border: 0;
+    outline: none;
+}
+
+button.active {
+    color: red;
+}
+
+.v2-wrapper {
+    margin: 0 auto;
+    padding: 24px 36px;
+}
+
+.v2-title {
+    margin: 24px 0;
+    text-align: center;
+    font-size: 24px;
+}
+
+.v2-directional {
+    display: flex;
+    justify-content: end;
+
+    margin: 20px;
+}
+
+.v2-directional button {
+    padding: 12px 20px;
+    margin-right: 12px;
+    border-radius: 4px;
+    color: #333;
+    background-color: #fff;
+    border: 1px solid #333;
+    cursor: pointer;
+}
+
+.v2-directional button.active {
+    color: #fff;
+    background-color: #0016ff;
+    border: 1px solid #0016ff;
+}

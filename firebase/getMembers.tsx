@@ -10,6 +10,7 @@ interface Member {
     name: string,
     scored: number
     id: string,
+    test?: string
 }
 
 
