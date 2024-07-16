@@ -1,19 +1,33 @@
 import { addDoc, collection, deleteDoc, doc, getDocs, query, where } from "firebase/firestore";
 import React, { useState } from "react";
 import db from "../../../firebase/firebase";
-import './DetailAchievement.css'
+import styles from "./DetailAchievement.module.css";
 
-function DetailAchievement({ members, memberStats, updateData}: any) {
+function DetailAchievement({ members, memberStats, updateData, requestDate, admin = false }: any) {
     const [memberData, setMemberData] = useState({ memberId: "", scored: 0, assist: 0, date: "" });
 
     const [selectedMember, setSelectedMember] = useState({ memberId: "", name: "" });
 
-    const uniqueDates = [...new Set(memberStats.map((stats: any) => stats.date))].sort();
+    const handleRequestDates = (date: string) => {
+        if (
+            requestDate.fullDate ||
+            (new Date(date) >= new Date(requestDate.startDate) &&
+                new Date(date) <= new Date(requestDate.endDate))
+        ) {
+            return date;
+        }
+        return null;
+    };
+
+    const uniqueDates = [
+        ...new Set(memberStats.map((stats: any) => handleRequestDates(stats.date))),
+    ]
+        .filter((date) => date !== null)
+        .sort();
 
     const [sortedStats, setSortedStats] = useState([]);
 
     const [showAddMemberData, setShowAddMemberData] = useState(null);
-
 
     // Hàm để định dạng ngày tháng, bỏ năm
     const formatDate = (dateString: string) => {
@@ -26,7 +40,7 @@ function DetailAchievement({ members, memberStats, updateData}: any) {
 
         setMemberData({
             ...memberData,
-            [name]: name === 'scored' || name === 'assist' ? parseInt(value, 10) : value,
+            [name]: name === "scored" || name === "assist" ? parseInt(value, 10) : value,
         });
     };
 
@@ -37,7 +51,7 @@ function DetailAchievement({ members, memberStats, updateData}: any) {
             .filter((stats: { memberId: string }) => stats.memberId === memberId)
             .sort((a: any, b: any) => new Date(a.date).getTime() - new Date(b.date).getTime());
 
-            console.log(filteredStats)
+        console.log(filteredStats);
 
         setSortedStats(filteredStats);
     };
@@ -81,7 +95,7 @@ function DetailAchievement({ members, memberStats, updateData}: any) {
 
         updateData();
 
-        setMemberData({ ...memberData ,memberId: "", scored: 0, assist: 0})
+        setMemberData({ ...memberData, memberId: "", scored: 0, assist: 0 });
     };
 
     const deleteMemberData = async (id: string) => {
@@ -102,7 +116,7 @@ function DetailAchievement({ members, memberStats, updateData}: any) {
     };
 
     return (
-        <div className="detail_wrapper">
+        <div className={styles.wrapper}>
             <table className="detail_table" border={1}>
                 <thead>
                     <tr>
@@ -112,14 +126,17 @@ function DetailAchievement({ members, memberStats, updateData}: any) {
                             if (!date) return;
                             return <th key={date}>{formatDate(date)}</th>;
                         })}
-                        <th>
-                            Edit
-                            <input
-                                name="date"
-                                type="date"
-                                onChange={handleChangeFormAddMemberData}
-                            />
-                        </th>
+
+                        {admin && (
+                            <th>
+                                Edit
+                                <input
+                                    name="date"
+                                    type="date"
+                                    onChange={handleChangeFormAddMemberData}
+                                />
+                            </th>
+                        )}
                     </tr>
                 </thead>
                 <tbody>
@@ -128,6 +145,7 @@ function DetailAchievement({ members, memberStats, updateData}: any) {
                             <tr>
                                 <td>
                                     <button
+                                        className={styles.btn_member}
                                         type="button"
                                         style={{ width: "100%" }}
                                         onClick={() => testDetail(member.id, member.name)}
@@ -155,43 +173,64 @@ function DetailAchievement({ members, memberStats, updateData}: any) {
                                     );
                                 })}
 
-                                <td>
-                                    <button onClick={() => setShowAddMemberData(member.id)}>
-                                        Thêm / Chỉnh sửa
-                                    </button>
-                                </td>
+                                {admin && (
+                                    <td>
+                                        <button onClick={() => setShowAddMemberData(member.id)}>
+                                            Thêm / Chỉnh sửa
+                                        </button>
+                                    </td>
+                                )}
                             </tr>
                             {showAddMemberData === member.id && (
-                                <tr>
-                                    <td colSpan={uniqueDates.length + 2}>
+                                <tr className={styles.edit}>
+                                    <td>
                                         <form onSubmit={(e) => handleAddMemberData(e, member.id)}>
                                             <label>{member.name}</label>
-                                            <input
-                                                name="scored"
-                                                type="number"
-                                                value={memberData.scored}
-                                                onChange={handleChangeFormAddMemberData}
-                                            />
-                                            <input
-                                                name="assist"
-                                                type="number"
-                                                value={memberData.assist}
-                                                onChange={handleChangeFormAddMemberData}
-                                            />
-                                            <input
-                                                name="date"
-                                                type="date"
-                                                value={memberData.date}
-                                                onChange={handleChangeFormAddMemberData}
-                                            />
 
-                                            <button
-                                                type="button"
-                                                onClick={() => setShowAddMemberData(null)}
-                                            >
-                                                Hủy
-                                            </button>
-                                            <button type="submit">Cập nhật</button>
+                                            <div className={styles.edit_inputs}>
+                                                <label>
+                                                    <span>Ghi bàn:</span>
+                                                    <input
+                                                        name="scored"
+                                                        type="number"
+                                                        value={memberData.scored}
+                                                        onChange={handleChangeFormAddMemberData}
+                                                    />
+                                                </label>
+
+                                                <label>
+                                                    <span>Kiến tạo:</span>
+                                                    <input
+                                                        name="assist"
+                                                        type="number"
+                                                        value={memberData.assist}
+                                                        onChange={handleChangeFormAddMemberData}
+                                                    />
+                                                </label>
+
+                                                <label>
+                                                    <span>Ngày:</span>
+                                                    <input
+                                                        name="date"
+                                                        type="date"
+                                                        value={memberData.date}
+                                                        onChange={handleChangeFormAddMemberData}
+                                                    />
+                                                </label>
+                                            </div>
+
+                                            <div>
+                                                <button
+                                                    className={styles.btn_cancel}
+                                                    type="button"
+                                                    onClick={() => setShowAddMemberData(null)}
+                                                >
+                                                    Hủy
+                                                </button>
+                                                <button className={styles.btn_submit} type="submit">
+                                                    Cập nhật
+                                                </button>
+                                            </div>
                                         </form>
                                     </td>
                                 </tr>
@@ -202,8 +241,11 @@ function DetailAchievement({ members, memberStats, updateData}: any) {
             </table>
 
             {selectedMember.memberId && (
-                <div>
-                    <button onClick={() => setSelectedMember({ ...selectedMember, memberId: "" })}>
+                <div className={styles.synthetic}>
+                    <button
+                        className={styles.synthetic_close}
+                        onClick={() => setSelectedMember({ ...selectedMember, memberId: "" })}
+                    >
                         X
                     </button>
                     <table border={1}>

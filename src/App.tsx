@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import "./App.css";
+import { collection, getDocs } from "firebase/firestore";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import db from "../firebase/firebase";
 import { Member } from "../firebase/getMembers";
-import { collection, getDocs } from "firebase/firestore";
-import V2 from "./pages/V2";
+import { publicRoute } from "./routes";
+import DefaultLayout from "./components/Layout/DefaultLayout";
 
 function App() {
     const [members, setMember] = useState<Member[]>([]);
@@ -12,10 +13,10 @@ function App() {
     const [v2s, setV2s] = useState([]);
 
     const updateData = () => {
-        fetchMembers()
+        fetchMembers();
 
-        fetchV2()
-    }
+        fetchV2();
+    };
 
     const fetchMembers = async () => {
         const members1: Member[] = [];
@@ -44,31 +45,58 @@ function App() {
 
     const fetchV2 = async () => {
         const querySnapshot = await getDocs(collection(db, "v2"));
-        
-        let v2s: any = []
+
+        let v2s: any = [];
         querySnapshot.forEach((doc) => {
             // console.log(doc.data());
             const data = doc.data();
 
-            v2s = [...v2s, {
-                id: doc.id,
-                memberId: data.memberId,
-                assist: data.assist,
-                scored: data.scored,
-                date: data.date
-            }];
-
-            });
-        setV2s(v2s)
-    }
+            v2s = [
+                ...v2s,
+                {
+                    id: doc.id,
+                    memberId: data.memberId,
+                    assist: data.assist,
+                    scored: data.scored,
+                    date: data.date,
+                },
+            ];
+        });
+        setV2s(v2s);
+    };
 
     useEffect(() => {
-        updateData()
+        updateData();
     }, []);
 
     return (
         <div>
-            <V2 members={members} updateData={updateData} memberStats={v2s}/>
+            {/* <V2 members={members} updateData={updateData} memberStats={v2s}/> */}
+            <Router>
+                <Routes>
+                    {publicRoute.map((route, index) => {
+                        let Layout = DefaultLayout;
+
+                        let Page = route.element;
+
+                        return (
+                            <Route
+                                key={index}
+                                path={route.path}
+                                element={
+                                    <Layout>
+                                        <Page
+                                            members={members}
+                                            updateData={updateData}
+                                            memberStats={v2s}
+                                        />
+                                    </Layout>
+                                }
+                            />
+                        );
+                    })}
+                </Routes>
+            </Router>
         </div>
     );
 }

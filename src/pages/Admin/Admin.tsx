@@ -2,12 +2,13 @@ import { useState } from "react";
 
 import DetailAchievement from "../../components/DetailAchievement";
 import TotalAchievement from "../../components/TotalAchievement";
-import styles from "./V2.module.css";
+import styles from "./Admin.module.css";
 
-const V2 = ({ members, memberStats, updateData }: any) => {
+const Admin = ({ members, memberStats, updateData }: any) => {
     const requestDate = {
         startDate: "2024-03-01",
         endDate: "2024-06-30",
+        fullDate: true,
     };
 
     const [content, setContent] = useState("detail");
@@ -40,10 +41,11 @@ const V2 = ({ members, memberStats, updateData }: any) => {
                     memberStats={memberStats}
                     updateData={updateData}
                     requestDate={requestDate}
+                    admin={true}
                 />
             )}
         </div>
     );
 };
 
-export default V2;
+export default Admin;

@@ -38,15 +38,10 @@ function TotalAchievement({ members, v2s }: any) {
                 </thead>
                 <tbody>
                     {memberStarts.map((member: any) => {
-
                         return (
                             <React.Fragment key={member.id}>
                                 <tr>
-                                    <td>
-                                        <button type="button" style={{ width: "100%" }}>
-                                            {member.name}
-                                        </button>
-                                    </td>
+                                    <td>{member.name}</td>
                                     <td>{member.totalScored}</td>
                                     <td>{member.totalAssist}</td>
                                 </tr>
