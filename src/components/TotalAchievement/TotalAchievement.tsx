@@ -1,30 +1,32 @@
 import React, { useEffect, useState } from "react";
 
-function TotalAchievement({ members, v2s }: any) {
-    const [memberStarts, setMemberStats] = useState([]);
+function TotalAchievement({ members, memberStats, uniqueDates }: any) {
+    const [sumOfMembers, setSumOfmember] = useState([]);
 
     useEffect(() => {
-        // Tính tổng ghiban và kiento cho từng memberId
-        const stats = members.map((member: { id: any }) => {
-            const memberAchievements = v2s.filter((v2: any) => v2.memberId === member.id);
-            const totalScored = memberAchievements.reduce(
-                (sum: any, ach: any) => sum + ach.scored,
-                0
-            );
-            const totalAssist = memberAchievements.reduce(
-                (sum: any, ach: any) => sum + ach.assist,
-                0
+        // Tính tổng ghiban và kientao cho từng memberId
+        const stats = members.map((member: { id: string; name: string }) => {
+            const memberAchievements = memberStats.filter((memberStat: any) => {
+                return memberStat.memberId === member.id;
+            });
+
+            const result = memberAchievements.filter((memberAchievement: any) =>
+                uniqueDates.includes(memberAchievement.date)
             );
 
+            const totalScored = result.reduce((sum: any, ach: any) => sum + ach.scored, 0);
+            const totalAssist = result.reduce((sum: any, ach: any) => sum + ach.assist, 0);
+
             return {
-                ...member,
+                id: member.id,
+                name: member.name,
                 totalScored,
                 totalAssist,
             };
         });
 
-        setMemberStats(stats);
-    }, [members, v2s]);
+        setSumOfmember(stats);
+    }, [memberStats]);
 
     return (
         <div>
@@ -37,7 +39,7 @@ function TotalAchievement({ members, v2s }: any) {
                     </tr>
                 </thead>
                 <tbody>
-                    {memberStarts.map((member: any) => {
+                    {sumOfMembers.map((member: any) => {
                         return (
                             <React.Fragment key={member.id}>
                                 <tr>

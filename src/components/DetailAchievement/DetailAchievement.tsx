@@ -3,27 +3,10 @@ import React, { useState } from "react";
 import db from "../../../firebase/firebase";
 import styles from "./DetailAchievement.module.css";
 
-function DetailAchievement({ members, memberStats, updateData, requestDate, admin = false }: any) {
+function DetailAchievement({ members, memberStats, uniqueDates, updateData, admin = false }: any) {
     const [memberData, setMemberData] = useState({ memberId: "", scored: 0, assist: 0, date: "" });
 
     const [selectedMember, setSelectedMember] = useState({ memberId: "", name: "" });
-
-    const handleRequestDates = (date: string) => {
-        if (
-            requestDate.fullDate ||
-            (new Date(date) >= new Date(requestDate.startDate) &&
-                new Date(date) <= new Date(requestDate.endDate))
-        ) {
-            return date;
-        }
-        return null;
-    };
-
-    const uniqueDates = [
-        ...new Set(memberStats.map((stats: any) => handleRequestDates(stats.date))),
-    ]
-        .filter((date) => date !== null)
-        .sort();
 
     const [sortedStats, setSortedStats] = useState([]);
 
@@ -255,7 +238,7 @@ function DetailAchievement({ members, memberStats, updateData, requestDate, admi
                                 <th>Ngày</th>
                                 <th>Ghi bàn</th>
                                 <th>Kiến tạo</th>
-                                <th>Edit</th>
+                                {admin && <th>Edit</th>}
                             </tr>
                         </thead>
                         <tbody>
@@ -270,11 +253,13 @@ function DetailAchievement({ members, memberStats, updateData, requestDate, admi
                                         <td>{formatDate(stats.date)}</td>
                                         <td>{stats.scored}</td>
                                         <td>{parseInt(stats.assist)}</td>
-                                        <td>
-                                            <button onClick={() => deleteMemberData(stats.id)}>
-                                                Xóa
-                                            </button>
-                                        </td>
+                                        {admin && (
+                                            <td>
+                                                <button onClick={() => deleteMemberData(stats.id)}>
+                                                    Xóa
+                                                </button>
+                                            </td>
+                                        )}
                                     </tr>
                                 ))
                             ) : (

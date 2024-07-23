@@ -5,12 +5,31 @@ import TotalAchievement from "../../components/TotalAchievement";
 import styles from "./V3.module.css";
 
 const V3 = ({ members, memberStats, updateData }: any) => {
+    
+    const [content, setContent] = useState("detail");
+
     const requestDate = {
+        fullDate: false,
         startDate: "2024-07-01",
         endDate: "2024-09-30",
     };
 
-    const [content, setContent] = useState("detail");
+    const handleRequestDates = (date: string) => {
+        if (
+            requestDate.fullDate ||
+            (new Date(date) >= new Date(requestDate.startDate) &&
+                new Date(date) <= new Date(requestDate.endDate))
+        ) {
+            return date;
+        }
+        return null;
+    };
+
+    const uniqueDates = [
+        ...new Set(memberStats.map((stats: any) => handleRequestDates(stats.date))),
+    ]
+        .filter((date) => date !== null)
+        .sort();
 
     return (
         <div className={styles.wrapper}>
@@ -33,13 +52,17 @@ const V3 = ({ members, memberStats, updateData }: any) => {
             </div>
 
             {content === "total" ? (
-                <TotalAchievement members={members} v2s={memberStats} />
+                <TotalAchievement
+                    members={members}
+                    memberStats={memberStats}
+                    uniqueDates={uniqueDates}
+                />
             ) : (
                 <DetailAchievement
                     members={members}
                     memberStats={memberStats}
                     updateData={updateData}
-                    requestDate={requestDate}
+                    uniqueDates={uniqueDates}
                 />
             )}
         </div>
