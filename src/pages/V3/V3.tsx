@@ -8,6 +8,7 @@ const V3 = ({ members, memberStats, updateData }: any) => {
     
     const [content, setContent] = useState("detail");
 
+    // NGÀY THEO YÊU CẦU
     const requestDate = {
         fullDate: false,
         startDate: "2024-07-01",
@@ -30,6 +31,7 @@ const V3 = ({ members, memberStats, updateData }: any) => {
     ]
         .filter((date) => date !== null)
         .sort();
+    // END NGÀY THEO YÊU CẦU
 
     return (
         <div className={styles.wrapper}>

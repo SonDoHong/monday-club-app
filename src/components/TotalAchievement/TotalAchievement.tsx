@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 
+import styles from './TotalAchievement.module.css'
+
 function TotalAchievement({ members, memberStats, uniqueDates }: any) {
     const [sumOfMembers, setSumOfmember] = useState([]);
 
@@ -30,7 +32,7 @@ function TotalAchievement({ members, memberStats, uniqueDates }: any) {
 
     return (
         <div>
-            <table className="detail_table" border={1}>
+            <table className={styles.total_table} border={1}>
                 <thead>
                     <tr>
                         <th>Thành viên</th>

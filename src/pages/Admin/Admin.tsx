@@ -5,13 +5,32 @@ import TotalAchievement from "../../components/TotalAchievement";
 import styles from "./Admin.module.css";
 
 const Admin = ({ members, memberStats, updateData }: any) => {
+    const [content, setContent] = useState("detail");
+
+    // NGÀY THEO YÊU CẦU
     const requestDate = {
         startDate: "2024-03-01",
         endDate: "2024-06-30",
         fullDate: true,
     };
 
-    const [content, setContent] = useState("detail");
+    const handleRequestDates = (date: string) => {
+        if (
+            requestDate.fullDate ||
+            (new Date(date) >= new Date(requestDate.startDate) &&
+                new Date(date) <= new Date(requestDate.endDate))
+        ) {
+            return date;
+        }
+        return null;
+    };
+
+    const uniqueDates = [
+        ...new Set(memberStats.map((stats: any) => handleRequestDates(stats.date))),
+    ]
+        .filter((date) => date !== null)
+        .sort();
+    // END NGÀY THEO YÊU CẦU
 
     return (
         <div className={styles.wrapper}>
@@ -34,13 +53,13 @@ const Admin = ({ members, memberStats, updateData }: any) => {
             </div>
 
             {content === "total" ? (
-                <TotalAchievement members={members} v2s={memberStats} />
+                <TotalAchievement className={styles.total_table} members={members} memberStats={memberStats} uniqueDates={uniqueDates} />
             ) : (
                 <DetailAchievement
                     members={members}
                     memberStats={memberStats}
                     updateData={updateData}
-                    requestDate={requestDate}
+                    uniqueDates={uniqueDates}
                     admin={true}
                 />
             )}

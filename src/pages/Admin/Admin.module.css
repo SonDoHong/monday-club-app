@@ -68,6 +68,12 @@
     z-index: 3;
 }
 
+.wrapper .total_table table[border="1"] tr th:last-child,
+.wrapper .total_table table[border="1"] tr td:last-child {
+    max-width: none;
+    width: auto !important;
+}
+
 .wrapper table[border="1"] tr th:last-child {
     z-index: 4;
 }

@@ -5,6 +5,7 @@ import TotalAchievement from "../../components/TotalAchievement";
 import styles from "./V2.module.css";
 
 const V2 = ({ members, memberStats, updateData }: any) => {
+    
     const [content, setContent] = useState("detail");
 
     // NGÀY THEO YÊU CẦU
