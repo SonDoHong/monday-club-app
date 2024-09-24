@@ -33,7 +33,7 @@ const Admin = ({ members, memberStats, updateData }: any) => {
     // END NGÀY THEO YÊU CẦU
 
     return (
-        <div className={'wrapper_app'}>
+        <div className={'wrapper_admin'}>
             <h2 className={'title_content'}>Thành tích của các thành viên</h2>
 
             <div className={'directional'}>

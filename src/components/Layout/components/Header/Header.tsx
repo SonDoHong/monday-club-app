@@ -30,6 +30,13 @@ function Header() {
                 >
                     v3
                 </NavLink>
+
+                <NavLink
+                    className={({ isActive }) => (isActive ? 'active' : 'nav_item')}
+                    to={config.routes.admin}
+                >
+                    Admin
+                </NavLink>
             </div>
         </div>
     );
