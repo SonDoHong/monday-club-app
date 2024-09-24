@@ -164,3 +164,20 @@ table[border="1"] tr td:nth-child(1)::before {
 ::-webkit-scrollbar-thumb:hover {
     background: var(--primary-active); 
 }
+
+@media screen and (max-width: 426px) {
+    .wrapper_admin {
+        padding: 12px;
+    }
+    table[border="1"] th,
+    table[border="1"] td {
+        padding: 6px;
+    }
+
+    table[border="1"] tr td:nth-child(1) {
+        padding-right: 160px;
+    }
+    .btn_member {
+        padding: 4px;
+    }
+}

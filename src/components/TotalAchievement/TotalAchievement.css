@@ -1,4 +1,19 @@
+.wrapper_total_table {
+    overflow: scroll;
+}
+
 .total_table[border="1"] tr th:last-child,
 .total_table[border="1"] tr td:last-child {
     width: auto !important;
+}
+
+@media screen and (max-width: 426px) {
+    .wrapper_total_table table[border="1"] tr th,
+    .wrapper_total_table table[border="1"] tr td {
+        font-size: 16px;
+    }
+
+    .wrapper_total_table table[border="1"] tr td:nth-child(1) {
+        padding: 0 12px;
+    }
 }

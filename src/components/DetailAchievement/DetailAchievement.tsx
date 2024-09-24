@@ -231,7 +231,8 @@ function DetailAchievement({ members, memberStats, uniqueDates, updateData, admi
                     >
                         X
                     </button>
-                    <table border={1}>
+                    <div className="synthetic_sub">
+                    <table style={{margin: 0}} border={1}>
                         <thead>
                             <tr>
                                 <th>Thành viên</th>
@@ -246,7 +247,7 @@ function DetailAchievement({ members, memberStats, uniqueDates, updateData, admi
                                 sortedStats.map((stats: any, index) => (
                                     <tr key={index}>
                                         {index === 0 && (
-                                            <td rowSpan={sortedStats.length}>
+                                            <td style={{zIndex: 2}} rowSpan={sortedStats.length}>
                                                 {selectedMember.name}
                                             </td>
                                         )}
@@ -270,6 +271,8 @@ function DetailAchievement({ members, memberStats, uniqueDates, updateData, admi
                             )}
                         </tbody>
                     </table>
+
+                    </div>
                 </div>
             )}
         </div>

@@ -32,8 +32,8 @@ function Header() {
                 </NavLink>
 
                 <NavLink
-                    style={{display: 'none'}}
-                    className={({ isActive }) => (isActive ? 'active' : 'nav_item')}
+                    // style={{display: 'none'}}
+                    className={({ isActive }) => (isActive ? 'active' : 'nav_item') + ' ' + 'link_admin_btn'}
                     to={config.routes.admin}
                 >
                     Admin

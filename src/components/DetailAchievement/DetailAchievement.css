@@ -113,6 +113,7 @@
     z-index: 100;
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 .synthetic_close {
@@ -131,4 +132,10 @@
     max-width: auto !important;
     padding: 0 !important;
     text-align: center;
+}
+
+.synthetic_sub {
+    width: 80%;
+    height: 50%;
+    overflow: scroll;
 }

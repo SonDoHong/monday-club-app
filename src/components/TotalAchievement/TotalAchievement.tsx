@@ -31,7 +31,7 @@ function TotalAchievement({ members, memberStats, uniqueDates }: any) {
     }, [memberStats]);
 
     return (
-        <div>
+        <div className="wrapper_total_table">
             <table className={'total_table'} border={1}>
                 <thead>
                     <tr>

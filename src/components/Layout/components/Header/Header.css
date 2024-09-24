@@ -55,3 +55,7 @@
     color: var(--white);
     padding: 8px;
 }
+
+.link_admin_btn {
+    margin-left: auto;
+}
