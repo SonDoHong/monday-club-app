@@ -31,13 +31,13 @@ function Header() {
                     v3
                 </NavLink>
 
-                {false && <NavLink
+                <NavLink
                     style={{display: 'none'}}
                     className={({ isActive }) => (isActive ? 'active' : 'nav_item')}
                     to={config.routes.admin}
                 >
                     Admin
-                </NavLink>}
+                </NavLink>
             </div>
         </div>
     );

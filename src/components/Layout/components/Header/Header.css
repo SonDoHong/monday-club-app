@@ -55,9 +55,3 @@
     color: var(--white);
     padding: 8px;
 }
-
-@media (min-width: 1000px) and (max-width: 1400px) {
-    .nav_title {
-        color: red;
-    }
-}
