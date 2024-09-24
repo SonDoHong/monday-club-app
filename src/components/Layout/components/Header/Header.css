@@ -1,4 +1,4 @@
-.wrapper {
+.wrapper_header {
     display: flex;
     align-items: center;
     height: var(--header-height);

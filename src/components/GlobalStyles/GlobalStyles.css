@@ -52,7 +52,7 @@ table[border="1"] tr td {
 
 table[border="1"] th,
 table[border="1"] td {
-    font-size: 16px;
+    font-size: 20px;
     padding: 12px 32px;
     border:1px solid rgb(79, 183, 220);
     white-space: nowrap;
@@ -85,6 +85,7 @@ table[border="1"] tr th {
     position: sticky;
     top: 0;
     z-index: 2;
+
 }
 
 /* table[border="1"] tr th::after {

@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import DetailAchievement from "../../components/DetailAchievement";
 import TotalAchievement from "../../components/TotalAchievement";
-import styles from "./Admin.module.css";
+import "./Admin.css";
 
 const Admin = ({ members, memberStats, updateData }: any) => {
     const [content, setContent] = useState("detail");
@@ -33,27 +33,27 @@ const Admin = ({ members, memberStats, updateData }: any) => {
     // END NGÀY THEO YÊU CẦU
 
     return (
-        <div className={styles.wrapper}>
-            <h2 className={styles.title_content}>Thành tích của các thành viên</h2>
+        <div className={'wrapper_app'}>
+            <h2 className={'title_content'}>Thành tích của các thành viên</h2>
 
-            <div className={styles.directional}>
+            <div className={'directional'}>
                 <button
-                    className={`${styles.bn39} ${content === "detail" ? styles.active : ""}`}
+                    className={`${'bn39'} ${content === "detail" ? 'active' : ""}`}
                     onClick={() => setContent("detail")}
                 >
-                    <span className={styles.bn39span}>Chi tiết</span>
+                    <span className={'bn39span'}>Chi tiết</span>
                 </button>
 
                 <button
-                    className={`${styles.bn39} ${content === "total" ? styles.active : ""}`}
+                    className={`${'bn39'} ${content === "total" ? 'active' : ""}`}
                     onClick={() => setContent("total")}
                 >
-                    <span className={styles.bn39span}>Tổng</span>
+                    <span className={'bn39span'}>Tổng</span>
                 </button>
             </div>
 
             {content === "total" ? (
-                <TotalAchievement className={styles.total_table} members={members} memberStats={memberStats} uniqueDates={uniqueDates} />
+                <TotalAchievement className={'total_table'} members={members} memberStats={memberStats} uniqueDates={uniqueDates} />
             ) : (
                 <DetailAchievement
                     members={members}

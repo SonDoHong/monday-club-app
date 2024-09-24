@@ -1,7 +1,7 @@
 import { addDoc, collection, deleteDoc, doc, getDocs, query, where } from "firebase/firestore";
 import React, { useState } from "react";
 import db from "../../../firebase/firebase";
-import styles from "./DetailAchievement.module.css";
+import "./DetailAchievement.css";
 
 function DetailAchievement({ members, memberStats, uniqueDates, updateData, admin = false }: any) {
     const [memberData, setMemberData] = useState({ memberId: "", scored: 0, assist: 0, date: "" });
@@ -99,7 +99,7 @@ function DetailAchievement({ members, memberStats, uniqueDates, updateData, admi
     };
 
     return (
-        <div className={styles.wrapper}>
+        <div className={'wrapper_detail'}>
             <table className="detail_table" border={1}>
                 <thead>
                     <tr>
@@ -128,7 +128,7 @@ function DetailAchievement({ members, memberStats, uniqueDates, updateData, admi
                             <tr>
                                 <td>
                                     <button
-                                        className={styles.btn_member}
+                                        className={'btn_member'}
                                         type="button"
                                         style={{ width: "100%" }}
                                         onClick={() => testDetail(member.id, member.name)}
@@ -165,12 +165,12 @@ function DetailAchievement({ members, memberStats, uniqueDates, updateData, admi
                                 )}
                             </tr>
                             {showAddMemberData === member.id && (
-                                <tr className={styles.edit}>
+                                <tr className={'edit'}>
                                     <td>
                                         <form onSubmit={(e) => handleAddMemberData(e, member.id)}>
                                             <label>{member.name}</label>
 
-                                            <div className={styles.edit_inputs}>
+                                            <div className={'edit_inputs'}>
                                                 <label>
                                                     <span>Ghi bàn:</span>
                                                     <input
@@ -204,13 +204,13 @@ function DetailAchievement({ members, memberStats, uniqueDates, updateData, admi
 
                                             <div>
                                                 <button
-                                                    className={styles.btn_cancel}
+                                                    className={'btn_cancel'}
                                                     type="button"
                                                     onClick={() => setShowAddMemberData(null)}
                                                 >
                                                     Hủy
                                                 </button>
-                                                <button className={styles.btn_submit} type="submit">
+                                                <button className={'btn_submit'} type="submit">
                                                     Cập nhật
                                                 </button>
                                             </div>
@@ -224,9 +224,9 @@ function DetailAchievement({ members, memberStats, uniqueDates, updateData, admi
             </table>
 
             {selectedMember.memberId && (
-                <div className={styles.synthetic}>
+                <div className={'synthetic'}>
                     <button
-                        className={styles.synthetic_close}
+                        className={'synthetic_close'}
                         onClick={() => setSelectedMember({ ...selectedMember, memberId: "" })}
                     >
                         X

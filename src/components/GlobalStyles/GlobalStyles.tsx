@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import './GlobalStyles.module.css'
+import './GlobalStyles.css'
 
 function GlobalStyles({ children }: { children: ReactNode }) {
     return <div>{children}</div>;
