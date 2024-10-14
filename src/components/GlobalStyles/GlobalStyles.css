@@ -47,6 +47,7 @@ table[border="1"] {
 
 table[border="1"] tr td {
     height: 64px;
+    min-height: 64px;
 }
 
 table[border="1"] th,
@@ -110,6 +111,11 @@ table[border="1"] tr td:nth-child(1) {
     max-width: 300px;
     padding-right: 200px;
     z-index: 1;
+    background-color: #fff;
+}
+
+table[border="1"] tr:nth-child(even) td:nth-child(1) {
+    background: #f5f5f5;
 }
 
 table[border="1"] tr th:nth-child(1) {
