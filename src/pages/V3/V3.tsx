@@ -6,7 +6,7 @@ import "./V3.css";
 
 const V3 = ({ members, memberStats, updateData }: any) => {
     
-    const [content, setContent] = useState("detail");
+    const [content, setContent] = useState("total");
 
     // NGÀY THEO YÊU CẦU
     const requestDate = {
@@ -39,17 +39,17 @@ const V3 = ({ members, memberStats, updateData }: any) => {
 
             <div className={'directional'}>
                 <button
-                    className={`${'bn39'} ${content === "detail" ? 'active' : ""}`}
-                    onClick={() => setContent("detail")}
-                >
-                    <span className={'bn39span'}>Chi tiết</span>
-                </button>
-
-                <button
                     className={`${'bn39'} ${content === "total" ? 'active' : ""}`}
                     onClick={() => setContent("total")}
                 >
                     <span className={'bn39span'}>Tổng</span>
+                </button>
+
+                <button
+                    className={`${'bn39'} ${content === "detail" ? 'active' : ""}`}
+                    onClick={() => setContent("detail")}
+                >
+                    <span className={'bn39span'}>Chi tiết</span>
                 </button>
             </div>
 
