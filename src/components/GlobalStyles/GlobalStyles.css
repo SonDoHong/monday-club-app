@@ -50,6 +50,12 @@ table[border="1"] tr td {
     min-height: 64px;
 }
 
+table[border="1"] tr td > span {
+    display: block;
+    height: 52px;
+    line-height: 52px;
+}
+
 table[border="1"] th,
 table[border="1"] td {
     font-size: 20px;

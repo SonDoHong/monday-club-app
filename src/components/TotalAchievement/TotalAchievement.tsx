@@ -45,9 +45,9 @@ function TotalAchievement({ members, memberStats, uniqueDates }: any) {
                         return (
                             <React.Fragment key={member.id}>
                                 <tr>
-                                    <td>{member.name}</td>
-                                    <td>{member.totalScored}</td>
-                                    <td>{member.totalAssist}</td>
+                                    <td><span>{member.name}</span></td>
+                                    <td><span>{member.totalScored}</span></td>
+                                    <td><span>{member.totalAssist}</span></td>
                                 </tr>
                             </React.Fragment>
                         );
