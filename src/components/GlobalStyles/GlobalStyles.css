@@ -179,5 +179,6 @@ table[border="1"] tr td:nth-child(1)::before {
     }
     .btn_member {
         padding: 4px;
+        height: 100%;
     }
 }
