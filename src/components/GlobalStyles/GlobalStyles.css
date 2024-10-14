@@ -46,9 +46,7 @@ table[border="1"] {
 }
 
 table[border="1"] tr td {
-    background: #fafafa;
-    height: 44px;
-    max-height: 44px;
+    height: 64px;
 }
 
 table[border="1"] th,
