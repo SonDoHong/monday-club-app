@@ -2,9 +2,9 @@ import { useState } from "react";
 
 import DetailAchievement from "../../components/DetailAchievement";
 import TotalAchievement from "../../components/TotalAchievement";
-import "./V2.css";
+import "./Q2.css";
 
-const V2 = ({ members, memberStats, updateData }: any) => {
+const Q2 = ({ members, memberStats, updateData }: any) => {
     
     const [content, setContent] = useState("total");
 
@@ -71,4 +71,4 @@ const V2 = ({ members, memberStats, updateData }: any) => {
     );
 };
 
-export default V2;
+export default Q2;

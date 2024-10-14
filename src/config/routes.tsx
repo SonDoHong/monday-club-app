@@ -1,9 +1,10 @@
 const routes = {
     home: '/',
     admin: '/admin',
-    v1: '/v1',
-    v2: '/v2',
-    v3: '/v3',
+    Q1: '/Q1',
+    Q2: '/Q2',
+    Q3: '/Q3',
+    Q4: '/Q4',
 }
 
 export default routes

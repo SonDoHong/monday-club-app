@@ -12,23 +12,30 @@ function Header() {
                 
                 <NavLink
                     className={({ isActive }) => (isActive ? 'active' : 'nav_item')}
-                    to={config.routes.v1}
+                    to={config.routes.Q1}
                 >
-                    v1
+                    Q1
                 </NavLink>
 
                 <NavLink
                     className={({ isActive }) => (isActive ? 'active' : 'nav_item')}
-                    to={config.routes.v2}
+                    to={config.routes.Q2}
                 >
-                    v2
+                    Q2
                 </NavLink>
 
                 <NavLink
                     className={({ isActive }) => (isActive ? 'active' : 'nav_item')}
-                    to={config.routes.v3}
+                    to={config.routes.Q3}
                 >
-                    v3
+                    Q3
+                </NavLink>
+
+                <NavLink
+                    className={({ isActive }) => (isActive ? 'active' : 'nav_item')}
+                    to={config.routes.Q4}
+                >
+                    Q4
                 </NavLink>
 
                 <NavLink

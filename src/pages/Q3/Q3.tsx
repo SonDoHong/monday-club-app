@@ -2,9 +2,9 @@ import { useState } from "react";
 
 import DetailAchievement from "../../components/DetailAchievement";
 import TotalAchievement from "../../components/TotalAchievement";
-import "./V3.css";
+import "./Q3.css";
 
-const V3 = ({ members, memberStats, updateData }: any) => {
+const Q3 = ({ members, memberStats, updateData }: any) => {
     
     const [content, setContent] = useState("total");
 
@@ -34,7 +34,7 @@ const V3 = ({ members, memberStats, updateData }: any) => {
     // END NGÀY THEO YÊU CẦU
 
     return (
-        <div className={'wrapper_v3'}>
+        <div className={'wrapper_Q3'}>
             <h2 className={'title_content'}>Thành tích của các thành viên</h2>
 
             <div className={'directional'}>
@@ -71,4 +71,4 @@ const V3 = ({ members, memberStats, updateData }: any) => {
     );
 };
 
-export default V3;
+export default Q3;
