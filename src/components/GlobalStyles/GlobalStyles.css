@@ -79,7 +79,7 @@ table[border="1"] th {
 
 tr {
     position: relative;
-    height: 64px;
+    /* height: 64px; */
 }
 
 table[border="1"] tr th {
