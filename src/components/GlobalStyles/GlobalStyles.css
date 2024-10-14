@@ -48,6 +48,7 @@ table[border="1"] {
 table[border="1"] tr td {
     background: #fafafa;
     height: 100%;
+    min-height: 44px;
 }
 
 table[border="1"] th,
