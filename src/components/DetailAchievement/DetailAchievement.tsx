@@ -7,8 +7,6 @@ import { useLocation } from "react-router-dom";
 function DetailAchievement({ members, memberStats, uniqueDates, updateData, admin = false }: any) {
     const location = useLocation();
 
-    console.log("location ", location.pathname)
-
     const [memberData, setMemberData] = useState({ memberId: "", scored: 0, assist: 0, date: "" });
 
     const [selectedMember, setSelectedMember] = useState({ memberId: "", name: "" });
@@ -36,7 +34,7 @@ function DetailAchievement({ members, memberStats, uniqueDates, updateData, admi
         if (location.pathname !== "/admin") {
             return
         }
-        
+
         setSelectedMember({ memberId, name });
 
         const filteredStats = memberStats
