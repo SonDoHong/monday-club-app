@@ -178,7 +178,6 @@ table[border="1"] tr td:nth-child(1)::before {
         padding-right: 160px;
     }
     .btn_member {
-        padding: 4px;
-        height: 100%;
+        /* padding: 4px; */
     }
 }
