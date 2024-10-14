@@ -152,12 +152,12 @@ function DetailAchievement({ members, memberStats, uniqueDates, updateData, admi
                                     return (
                                         <td key={date}>
                                             {stats ? (
-                                                <div>
+                                                <div className="td_content">
                                                     <div>Ghi bàn: {stats.scored}</div>
                                                     <div>Kiến tạo: {stats.assist}</div>
                                                 </div>
                                             ) : (
-                                                "Tịt Ngòi"
+                                                <div className="td_content">Tịt Ngòi</div>
                                             )}
                                         </td>
                                     );
