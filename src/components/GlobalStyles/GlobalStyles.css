@@ -47,7 +47,7 @@ table[border="1"] {
 
 table[border="1"] tr td {
     background: #fafafa;
-    height: 44px;
+    height: 100%;
 }
 
 table[border="1"] th,
@@ -56,6 +56,7 @@ table[border="1"] td {
     padding: 12px 32px;
     border: 1px solid rgb(79, 183, 220);
     white-space: nowrap;
+    height: 100%;
 }
 
 table[border="1"] th {
