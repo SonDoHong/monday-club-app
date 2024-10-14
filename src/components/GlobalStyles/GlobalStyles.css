@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap");
 
 :root {
     --primary: #0800ff;
@@ -23,7 +23,7 @@ html {
 
 body {
     font-size: 1.6rem;
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
     color: var(--text-color);
 }
 
@@ -38,15 +38,15 @@ button {
 table[border="1"] {
     /* position: relative; */
     width: 100%;
-    border-collapse:collapse;
-    font:normal normal 11px Verdana,Arial,Sans-Serif;
-    color:#666;
+    border-collapse: collapse;
+    font: normal normal 11px Verdana, Arial, Sans-Serif;
+    color: #666;
 
     border-radius: 8px;
 }
 
 table[border="1"] tr td {
-    background:#fafafa;
+    background: #fafafa;
     height: 44px;
 }
 
@@ -54,16 +54,16 @@ table[border="1"] th,
 table[border="1"] td {
     font-size: 20px;
     padding: 12px 32px;
-    border:1px solid rgb(79, 183, 220);
+    border: 1px solid rgb(79, 183, 220);
     white-space: nowrap;
 }
 
 table[border="1"] th {
-    border:1px solid rgba(0, 187, 255, 0.3);
+    border: 1px solid rgba(0, 187, 255, 0.3);
 }
 
 table[border="1"] tr:nth-child(even) td {
-    background:#f5f5f5;
+    background: #f5f5f5;
 }
 
 table[border="1"] tr td:nth-child(n + 2) {
@@ -72,8 +72,8 @@ table[border="1"] tr td:nth-child(n + 2) {
 
 table[border="1"] th {
     background: var(--primary);
-    color:#fff;
-    font-weight:bold;
+    color: #fff;
+    font-weight: bold;
 }
 
 tr {
@@ -85,7 +85,6 @@ table[border="1"] tr th {
     position: sticky;
     top: 0;
     z-index: 2;
-
 }
 
 /* table[border="1"] tr th::after {
@@ -122,7 +121,7 @@ table[border="1"] tr th:nth-child(1) {
 table[border="1"] tr th:nth-child(1)::after,
 table[border="1"] tr td:nth-child(1)::after {
     display: block;
-    content: '';
+    content: "";
     width: 1px;
     height: 100%;
     position: absolute;
@@ -134,7 +133,7 @@ table[border="1"] tr td:nth-child(1)::after {
 table[border="1"] tr th:nth-child(1)::before,
 table[border="1"] tr td:nth-child(1)::before {
     display: block;
-    content: '';
+    content: "";
     width: 1px;
     height: 100%;
     position: absolute;
@@ -143,18 +142,17 @@ table[border="1"] tr td:nth-child(1)::before {
     background-color: rgb(79, 183, 220);
 }
 
-
 /* styles scrollbar */
 /* width */
 ::-webkit-scrollbar {
     width: 10px;
 }
-  
+
 /* Track */
 ::-webkit-scrollbar-track {
-    background: #f1f1f1; 
+    background: #f1f1f1;
 }
-   
+
 /* Handle */
 ::-webkit-scrollbar-thumb {
     background: #555;
@@ -162,7 +160,7 @@ table[border="1"] tr td:nth-child(1)::before {
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-    background: var(--primary-active); 
+    background: var(--primary-active);
 }
 
 @media screen and (max-width: 450px) {
@@ -178,6 +176,11 @@ table[border="1"] tr td:nth-child(1)::before {
         padding-right: 160px;
     }
     .btn_member {
-        /* padding: 4px; */
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: 4px;
     }
 }
