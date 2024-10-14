@@ -105,7 +105,6 @@ table[border="1"] tr th:nth-child(1) {
 
 table[border="1"] tr td:nth-child(1) {
     position: sticky;
-    position: -webkit-sticky;
     top: 0;
     left: 0;
     width: 300px;

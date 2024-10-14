@@ -60,7 +60,6 @@
 .wrapper table[border="1"] tr th:last-child,
 .wrapper table[border="1"] tr td:last-child {
     position: sticky;
-    position: -webkit-sticky;
     top: 0;
     right: 0;
     width: 300px;
